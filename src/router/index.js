@@ -10,6 +10,8 @@ import CustomerCheckOrder from '@/components/customer/customer_checkOrder'
 import Coupons from '@/components/dashboard/Coupons'
 import SortTest from '@/components/page/sortTest'
 
+import Home from '@/components/index_page/index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -80,6 +82,11 @@ export default new Router({
           component: SortTest,
         },
       ]
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     }
   ]
 })
