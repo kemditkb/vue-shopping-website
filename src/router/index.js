@@ -9,6 +9,7 @@ import CustomerOrder from '@/components/customer/customer_order'
 import CustomerCheckOrder from '@/components/customer/customer_checkOrder'
 import Coupons from '@/components/dashboard/Coupons'
 import SortTest from '@/components/page/sortTest'
+import ContactUs from '@/components/contact_us_page/contact_us'
 
 import Home from '@/components/index_page/index'
 
@@ -87,6 +88,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/contact_us',
+      name: 'ContactUs',
+      component: ContactUs
     }
   ]
 })

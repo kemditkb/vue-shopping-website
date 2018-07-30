@@ -2,8 +2,10 @@
     <div>
         <Header></Header>
         <CarouselAuto></CarouselAuto>
-        <Slogan></Slogan>
+        <AD></AD>
         <Carouselmanual></Carouselmanual>
+        <AdDisconut></AdDisconut>
+        <Slogan></Slogan>
         <Footer></Footer>
     </div>
 </template>
@@ -15,6 +17,8 @@ import Footer from './footer'
 import CarouselAuto from './carousel_auto'
 import Slogan from './slogan'
 import Carouselmanual from './carousel_manual'
+import AD from './ad'
+import AdDisconut from './ad_discount'
 
 
 export default {
@@ -23,7 +27,9 @@ export default {
         Footer,
         CarouselAuto,
         Slogan,
-        Carouselmanual
+        Carouselmanual,
+        AD,
+        AdDisconut
     }
 }
 </script>

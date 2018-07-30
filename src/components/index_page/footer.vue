@@ -17,6 +17,9 @@
                     <p>Linkedin</p>
                 </div>
             </div>
+            <router-link to="/contact_us" class="contact-us" >
+                聯絡 Vue shopping
+            </router-link>
         </div>
     </div>
 </template>
@@ -35,19 +38,22 @@ export default {
     >#footer-content{
         display: flex;
         justify-content: center;
-        padding: 10px 0px;
+        padding:50px 0px;
         margin-top: 20px;
-        >.about-us{
+        >.about-us,
+        >.contact-us{
             margin-right: 100px;
-            margin-bottom: 6px;
             font-size: 14px;
             font-weight: 700;
+            color: #49454b;
             &:hover{
                 cursor: pointer;
+                text-decoration: none;
                 color: #4fc08d;
             }
         }
         >.follow-title{
+            margin-right: 100px;
             >.item{
                 display: flex;
                 padding-left: 15px;

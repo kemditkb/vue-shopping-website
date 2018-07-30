@@ -34,6 +34,7 @@
 <style lang="scss">
 #slogan{
     color: #49454b;
+    margin:30px 0;
     >#slogan-background{
         >.container{
             >h2{

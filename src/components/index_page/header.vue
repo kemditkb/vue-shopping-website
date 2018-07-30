@@ -3,15 +3,16 @@
         <div id="header-content">
             <div class="link-list">
                 <!-- 改成routerlink -->
+                <div>主打活動</div>
                 <div>折扣商品</div>
-                <div>熱銷情報</div>
                 <div>商品列表</div>
+                <div>熱銷情報</div>
             </div>
             <div class="logo">
                 <h1>Vue shopping</h1>
             </div>
             <div class="shopping-cart">
-                <i class="fas fa-shopping-cart fa-lg"></i>
+                購物車<i class="fas fa-shopping-cart fa-lg"></i>
             </div>
         </div>
     </div>
@@ -54,14 +55,6 @@ export default {
                 }
             }
         }
-        >.shopping-cart{
-            right: 0;
-            > i {
-                &:hover{
-                    cursor: pointer;
-                }
-            }
-        }
         >.logo{
             display: flex;
             align-items: center;
@@ -70,6 +63,16 @@ export default {
                 &:first-letter{
                     color:#4fc08d;
                 }
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        >.shopping-cart{
+            right: 0;
+            font-size: 16px;
+            > i {
+                margin-left: 10px;
             }
             &:hover{
                 cursor: pointer;
