@@ -1,0 +1,10 @@
+//載入bootstrap 套用變數的方法
+@import "~bootstrap/scss/functions";
+// 建立一個helpers資料夾避免與原始檔案衝突
+// 建立自訂義變數
+@import "./helpers/_variables";
+// 引用bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// 匯入_dashboard的scss檔
+@import "./_dashboard";
