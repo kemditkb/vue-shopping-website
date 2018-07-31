@@ -2,7 +2,7 @@
     <div>
         <Loading :active.sync="isLoading"></Loading>
         <Header></Header>
-        <div class="shopping-cart-list">
+        <div class="shopping-cart-list" v-if="openCartTemplate">
             <div class="container">
                 <div class="message"></div>
                 <div class="orderContent">
@@ -76,6 +76,15 @@
                 </div>
             </div>
         </div>
+        <div class="shopping-cart-empty" v-else>
+            <div class="container">
+                <h2>Oops!!你的購物車中沒有商品</h2>
+                <div class="btn-group">
+                    <router-link to="/home" class="back-btn">回到首頁繞繞</router-link>
+                    <router-link to="/home" class="back-btn">產品列表逛逛</router-link>
+                </div>
+            </div>
+        </div>
         <Footer></Footer>
     </div>
 </template>
@@ -102,6 +111,7 @@ export default {
                 }
             ],
             cart:[],
+            openCartTemplate: false,
             isLoading: false,
         }
     },
@@ -116,6 +126,11 @@ export default {
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/cart`;
             this.$http.get(api).then((response)=>{
                 vm.cart = response.data.data;
+                if( vm.cart.length > 0){
+                    vm.openCartTemplate = true;
+                }else{
+                    vm.openCartTemplate = false
+                }
                 this.isLoading = false;
                 console.log(vm.cart)
             })
@@ -294,6 +309,41 @@ export default {
                             box-shadow: 0 0.2em 0.2em -0.1em #c83166, 0 0.3em #a32252, 0 0.5em 0.5em -0.1em rgba(0,0,0,0.12);
                         }
                     }
+                }
+            }
+        }
+    }
+}
+.shopping-cart-empty{
+    height: calc(100vh - 200px - 90px);
+    >.container{
+        >h2{
+            text-align: center;
+            height: 100px;
+            line-height: 100px;
+        }
+        >.btn-group{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            >.back-btn{
+                height: 46px;
+                line-height: 46px;
+                font-size: 15px;
+                color: #839196;
+                border: solid 1px #839196;
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 20px;
+                border-radius: 4px;
+                margin: 0 20px;
+                cursor: pointer;
+                overflow: hidden;
+                &:hover{
+                    background-color:#839196;
+                    color: #ffffff; 
+                    text-decoration: none;
                 }
             }
         }
