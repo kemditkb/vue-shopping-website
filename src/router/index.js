@@ -12,6 +12,8 @@ import SortTest from '@/components/page/sortTest'
 import ContactUs from '@/components/contact_us_page/contact_us'
 
 import Home from '@/components/index_page/index'
+import ProductDetail from '@/components/product_page/product_detail'
+import ShoppingCart from '@/components/shopping_cart/shopping_cart'
 
 Vue.use(Router)
 
@@ -93,6 +95,16 @@ export default new Router({
       path: '/contact_us',
       name: 'ContactUs',
       component: ContactUs
+    },
+    {
+      path: '/product_detail',
+      name: 'ProductDetail',
+      component: ProductDetail
+    },
+    {
+      path: '/shopping_cart',
+      name: 'ShoppingCart',
+      component: ShoppingCart
     }
   ]
 })

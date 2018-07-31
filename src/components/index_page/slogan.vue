@@ -21,8 +21,8 @@
                     <div class="col-xs-12 col-md-4">
                         <div class="img-box card mt-20">
                             <img src="../../assets/screen.png" alt="">
-                            <h3>隨時隨地“滑”到你想去的地點</h3>
-                            <p>無論您習慣提前計劃或者是喜歡當下做決定都沒關係！讓你自由選擇你的旅途路程並獲得即時確認。</p>
+                            <h3>隨時隨地“滑”到你想去買的商品</h3>
+                            <p></p>
                         </div>
                     </div>
                 </div>

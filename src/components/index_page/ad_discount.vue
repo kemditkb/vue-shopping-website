@@ -25,9 +25,6 @@
     >.container{
         display: flex;
         align-items: center;
-        >.left{
-
-        }
         >.right{
             margin-left: auto;
             >button{
