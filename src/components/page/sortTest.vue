@@ -21,6 +21,7 @@
             </tr>
             </tbody>
         </table>
+        <input type="text" name="" id="" v-model="text">
     </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
             sortKey:'',
             //物件部分：一開始沒有被註冊到的物件不會響應式更新
             sortOrders:{},
+            text:'',
         }
     },
     created(){
@@ -53,6 +55,7 @@ export default {
     },
     computed:{
         filteredData(){
+            var text = this.text;
             var sortKey = this.sortKey
             var filterKey = this.filterKey && this.filterKey.toLowerCase()
             var order = this.sortOrders[sortKey] || 1
@@ -71,8 +74,20 @@ export default {
                         return (a === b ? 0 : a > b ? 1 : -1) * order
                     })
                 }
+                if(text){
+                    
+                    data = data.filter(function(row){
+                        console.log(
+                            Object.keys(row).some(function (key) {
+                                console.log(key)
+                                String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                            })
+                        );
+                    })
+                }
             return data
-        }
+        },
+        
     },
     filters: {
         capitalize: function (str) {
