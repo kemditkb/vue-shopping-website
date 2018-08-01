@@ -4,7 +4,11 @@
         <Header></Header>
         <div class="shopping-cart-list" v-if="openCartTemplate">
             <div class="container">
-                <div class="message"></div>
+                <div class="message" v-if="isMsg">
+                    <div class="alert alert-warning" role="alert">
+                        查無此優惠券代碼，請重新輸入！！
+                    </div>
+                </div>
                 <div class="orderContent">
                     <div class="order-summary">
                         <h5 class="summary-text">訂單摘要</h5>
@@ -30,6 +34,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="summary-coupon">
+                            <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+                            <div class="input-coupon">
+                                <!-- 觸發優惠碼事件之後api會自動套用 -->
+                                <button class="btn btn-outline-secondary" type="button" @click="addCouponCartItem">
+                                套用優惠碼
+                                </button>
+                            </div>
+                        </div>
                         <div class="delivery-way">
                             <div>選擇運送方式</div>
                             <select class="delivery-name">
@@ -51,7 +64,7 @@
                                 <div class="itemTotalText">商品總計</div>
                                 <div class="itemPrice">
                                     <span>NT$</span>
-                                    <span>{{cart.total}}</span>
+                                    <span>{{ cart.total }}</span>
                                 </div>
                             </div>
                             <div class="discountToal" v-if=" cart.total !== cart.final_total">
@@ -61,16 +74,23 @@
                                     <span>{{ cart.final_total || currencyFilters }}</span>
                                 </div>
                             </div>
-                            <div class="checkoutToal">
+                            <div class="checkoutToal" v-if=" cart.total == cart.final_total">
                                 <div class="checkoutToalText">結帳總金額</div>
                                 <div class="checkoutPrice">
                                     <span>NT$</span>
                                     <span>{{cart.total}}</span>
                                 </div>
                             </div>
+                            <div class="checkoutToal" v-if=" cart.total !== cart.final_total">
+                                <div class="checkoutToalText">結帳總金額</div>
+                                <div class="checkoutPrice">
+                                    <span>NT$</span>
+                                    <span>{{cart.final_total}}</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="orderCheck">
-                            <router-link to="#" class="orderCheckBtn">結帳去</router-link>
+                            <router-link to="/check_order" class="orderCheckBtn">結帳去</router-link>
                         </div>
                     </div>
                 </div>
@@ -81,7 +101,7 @@
                 <h2>Oops!!你的購物車中沒有商品</h2>
                 <div class="btn-group">
                     <router-link to="/home" class="back-btn">回到首頁繞繞</router-link>
-                    <router-link to="/home" class="back-btn">產品列表逛逛</router-link>
+                    <router-link to="/custom_order" class="back-btn">產品列表逛逛</router-link>
                 </div>
             </div>
         </div>
@@ -113,6 +133,8 @@ export default {
             cart:[],
             openCartTemplate: false,
             isLoading: false,
+            coupon_code:'',
+            isMsg:false,
         }
     },
     components:{
@@ -126,8 +148,9 @@ export default {
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/cart`;
             this.$http.get(api).then((response)=>{
                 vm.cart = response.data.data;
-                if( vm.cart.length > 0){
+                if( vm.cart.carts.length > 0){
                     vm.openCartTemplate = true;
+                    console.log(vm.openCartTemplate)
                 }else{
                     vm.openCartTemplate = false
                 }
@@ -145,6 +168,24 @@ export default {
                 vm.isLoading = false;
             })
         },
+        addCouponCartItem(){
+            const vm = this;
+            // 回傳到API的資料格式
+            const coupon = {
+                code: vm.coupon_code,
+            }
+            const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/coupon`;
+            // post coupon_code的資料到API
+            this.$http.post(api, { data: coupon}).then((response)=>{
+                console.log(response)
+                if(!response.data.success){
+                    vm.isMsg = true;
+                }else{
+                    vm.isMsg = false;
+                }
+                this.getCart();
+            })
+        },
     },
     created(){
         this.getCart();
@@ -155,7 +196,11 @@ export default {
 <style lang="scss" scoped>
 .shopping-cart-list{
     >.container{
-        >.message{}
+        >.message{
+            >.alert{
+                text-align: center;
+            }
+        }
         >.orderContent{
             display: flex;
             >.order-summary{
@@ -168,6 +213,20 @@ export default {
                     height:50px;
                     line-height: 50px;
                     padding-left: 20px;
+                }
+                >.summary-coupon{
+                    display: flex;
+                    padding: 20px 0;
+                    margin: 0 20px;
+                    border-top: 1px solid #ddd;
+                    >.form-control{
+                        border-radius: 5px 0 0 5px;
+                    }
+                    >.input-coupon{
+                        >.btn{
+                            border-radius: 0 5px 5px 0;
+                        }
+                    }
                 }
                 >.summary-detail{
                     display: flex;
