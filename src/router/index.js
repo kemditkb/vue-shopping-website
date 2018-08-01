@@ -100,7 +100,7 @@ export default new Router({
       component: ContactUs
     },
     {
-      path: '/product_detail',
+      path: '/product_detail/:detailId',
       name: 'ProductDetail',
       component: ProductDetail
     },

@@ -280,6 +280,7 @@ export default {
           vm.status.LoadingItem = "";
           vm.getCart();
           $('#productModal').modal('hide');
+          console.log(response)
       });
     },
     // 取得購物車資料

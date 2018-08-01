@@ -3,11 +3,11 @@
         <div id="carouselExampleControls" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="img-item">
-                        <div class="card" style="width: 18rem;">
+                    <div class="img-item" >
+                        <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData1" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic3.jpg" alt="Card image cap">
+                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
@@ -19,45 +19,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic6.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic7.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic5.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic6.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic7.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic5.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <div class="card-title" @click="toLink(item)">{{item.title}}</div>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
@@ -65,10 +27,10 @@
                 </div>
                 <div class="carousel-item">
                     <div class="img-item">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData2" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic3.jpg" alt="Card image cap">
+                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
@@ -80,45 +42,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic3.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic2.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic4.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic3.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic2.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic4.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <div class="card-title" @click="toLink(item)">{{item.title}}</div>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
@@ -126,10 +50,10 @@
                 </div>
                 <div class="carousel-item">
                     <div class="img-item">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData3" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic4.jpg" alt="Card image cap">
+                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
@@ -141,45 +65,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic7.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic9.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic4.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="image-gallery">
-                                <div class="main-image">
-                                    <img class="card-img" src="../../assets/pic6.jpg" alt="Card image cap">
-                                </div>
-                                <div class="subordinate-image">
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic2.jpg" alt="Card image cap">
-                                    </div>
-                                    <div class="subordinate-section">
-                                        <img class="card-img" src="../../assets/pic3.jpg" alt="Card image cap">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <div class="card-title" @click="toLink(item)">{{item.title}}</div>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
@@ -202,6 +88,47 @@
     </div>
 </template>
 
+<script>
+export default {
+    data(){
+        return{
+            products:[],
+            carouselData1:[],
+            carouselData2:[],
+            carouselData3:[],
+        }
+    },
+    methods:{
+        getProducts(){
+            const vm = this;
+            // 取得產品列表的API
+            const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/products`;
+                this.$http.get(api).then((response) => {
+                // 回傳成功後 將資料塞回products 在模板上使用products 變數塞入資料
+                vm.products = response.data.products;
+                for(let i=0; i < vm.products.length ; i++){
+                    if( i < 3){
+                        vm.carouselData1.push(vm.products[i]);
+                    }else if( 3 <= i && i < 6){
+                        vm.carouselData2.push(vm.products[i]);
+                    }else if( 6 <= i && i < 9){
+                        vm.carouselData3.push(vm.products[i]);
+                    }
+                }
+            });
+        },
+        toLink(item){
+            this.$router.push(`/product_detail/${item.id}`)
+            console.log(item);
+        }
+    },
+    created(){
+        this.getProducts();
+    }
+}
+</script>
+
+
 <style lang="scss">
 #carouselManual{
     margin: 30px 0;
@@ -209,12 +136,14 @@
         position: relative;
         >.carousel-inner{
             >.carousel-item{
+                
                 >.img-item{
                     display: flex;
                     justify-content: center;
                     >.card{
                         margin:0 20px;
                         padding: 5px;
+                        height: 420px;
                         >img{
                             margin: auto;
                             width: 100px !important;
@@ -245,6 +174,13 @@
                                         height: 100%;
                                     }
                                 }
+                            }
+                        }
+                        >.card-body{
+                            >.card-title{
+                                font-size: 18px;
+                                font-weight: bold;
+                                cursor: pointer;
                             }
                         }
                     }

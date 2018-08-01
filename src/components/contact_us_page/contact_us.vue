@@ -1,99 +1,95 @@
 <template>
     <div id="contact-us">
-        <div class="header">
+        <Header></Header>
+        <div class="content" :class="{ active : toggleForm}">
             <div class="container">
-                <router-link to="/home" class="logo" >
-                    <h1>Vue shopping</h1>
-                </router-link>
-                <div class="link-list">
-                    <router-link to="/home" class="home" >
-                        回到首頁
-                    </router-link>
-                    <div class="shopping-cart">
-                        購物車<i class="fas fa-shopping-cart fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="container">
-                <form class="request-form">
+                <form class="request-form" v-if="!toggleForm">
                     <h2>提交訊息</h2>
                     <div class="form-group">
                         <label for="email-input">電子信箱</label>
-                        <input type="email" class="form-input" id="email-input" placeholder="name@example.com">
+                        <input type="email" 
+                            name="email"
+                            class="form-input" 
+                            id="email-input" 
+                            placeholder="name@example.com"
+                            v-validate="'required'"
+                            :class="{ 'is-invalid': errors.has('email') }">
+                        <span class="text-danger">
+                            {{ errors.first('email') }}
+                        </span>
                     </div>
+
                     <div class="form-group">
                         <label for="text-input">標題</label>
-                        <input type="text" class="form-input" id="text-input">
+                        <input type="text" 
+                        class="form-input" 
+                        id="text-input"
+                        name="title"
+                        v-validate="'required'"
+                        :class="{ 'is-invalid': errors.has('title') }">
+                        <span class="text-danger" v-if="errors.has('title')">標題欄位不得為空</span>
                     </div>
                     <div class="form-group">
                         <label for="textarea-input">描述</label>
-                        <textarea type="textarea" class="form-input-textarea" id="textarea-input">
+                        <textarea type="textarea" 
+                            class="form-input-textarea" 
+                            id="textarea-input"
+                            name="areaText"
+                            v-validate="'required'"
+                            :class="{ 'is-invalid': errors.has('areaText') }">
                         </textarea>
+                        <span class="text-danger" v-if="errors.has('areaText')">描述欄位不得為空</span>
                     </div>
                     <div class="form-group">
                         <label for="text-input">訂單編號</label>
                         <input type="text" class="form-input" id="text-input">
+                        <span>提供完整資料可以加速案件處理的速度</span>
                     </div>
-                    <button type="button" class="btn">提交</button>
+                    <button type="button" class="btn" @click="formSubmit">提交</button>
                 </form>
+                <div class="" v-else  @click="formSubmit">
+                    我們會盡快回覆您的訊息！！
+                    <router-link to="/home" class="home">
+                        按我回到首頁
+                    </router-link>
+                </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="container">
-                <div>Vue shopping Help Center for Taiwan</div>
-            </div>
-        </div>
+        <Footer></Footer>
     </div>
 </template>
 
-<style lang="scss" scoped>
-#contact-us{
-    >.header{
-        border-bottom: 1px solid #dddddd;
-        >.container{
-            display: flex;
-            
-            >.logo{
-                display: flex;
-                align-items: center;
-                height: 90px;
-                >h1{
-                    margin: 0;
-                    color: #49454b;
-                    &:first-letter{
-                        color:#4fc08d;
-                    }
-                }
-                &:hover{
-                    cursor: pointer;
-                    text-decoration: none;
-                }
-            }
-            >.link-list{
-                display: flex;
-                align-items: center;
-                margin-left: auto;
-                font-size: 16px;
-                >.home{
-                    color: #49454b;
-                    &:hover{
-                        cursor: pointer;
-                        color:#4fc08d;
-                        text-decoration: none;
-                    }
-                }
-                >.shopping-cart{
-                    margin-left: 20px;
-                    &:hover{
-                        cursor: pointer;
-                        color:#4fc08d;
-                        text-decoration: none;
-                    }
-                }
+<script>
+import Header from '../index_page/header'
+import Footer from '../index_page/footer'
+export default {
+    components:{
+        Header,
+        Footer
+    },
+    data(){
+        return{
+            toggleForm:false,
+        }
+    },
+    methods:{
+        formSubmit(){
+            if(!this.toggleForm){
+                this.toggleForm = !this.toggleForm;
+            }else{
+                this.toggleForm = !this.toggleForm;
             }
         }
+    }
+}
+</script>
+
+
+<style lang="scss" scoped>
+#contact-us{
+    
+    >.active{
+        height:calc(100vh - 179px - 70px - 100px );
     }
     >.content{
         margin:50px 0;
@@ -116,6 +112,9 @@
                             outline: none;
                             border: 1px solid #fd5491;
                         }
+                    }
+                    >span{
+                        display: block;
                     }
                     >textarea{
                         border: 1px solid #ddd;
@@ -146,18 +145,6 @@
             }
         }
     }
-    >.footer{
-        width: 100%;
-        height: 90px;
-        display: flex;
-        align-items: center;
-        border-top: 1px solid #ddd;
-        >.container{
-            >div{
-                font-size: 15px;
-                color:#49454b;
-            }
-        }
-    }
+    
 }
 </style>

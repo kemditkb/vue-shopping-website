@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading"></loading>
         <Header></Header>
         <!-- 訂單表單 -->
         <div class="content">
@@ -87,7 +88,7 @@
                         </div>
                     </div>
                     <div class="backToCart">
-                        <router-link to="#" class="backToCartBtn">返回購物車列表</router-link>
+                        <router-link to="/shopping_cart" class="backToCartBtn">返回購物車列表</router-link>
                     </div>
                 </div>
             </div>
@@ -163,6 +164,7 @@ export default {
         createOrder(){
             const vm = this;
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/order`;
+            this.isLoading = true;
             // 經由套件validate 判斷表單是否驗證成功 才執行資料傳遞
             this.$validator.validate().then( (result) => {
                 if (result) {
