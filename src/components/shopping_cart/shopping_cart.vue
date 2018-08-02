@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="item-subtotal">
                                         <span>NT$</span>
-                                        <span>{{ item.total }}</span>
+                                        <span>{{ item.total | currencyFilters }}</span>
                                     </div>
                                     <div class="item-delete" @click="removeCartItem(item.id)">
                                         <i class="far fa-trash-alt"></i>
@@ -64,28 +64,28 @@
                                 <div class="itemTotalText">商品總計</div>
                                 <div class="itemPrice">
                                     <span>NT$</span>
-                                    <span>{{ cart.total }}</span>
+                                    <span>{{ cart.total | currencyFilters }}</span>
                                 </div>
                             </div>
                             <div class="discountToal" v-if=" cart.total !== cart.final_total">
                                 <div class="discountToalText">優惠折扣價</div>
                                 <div class="discountPrice">
                                     <span>NT$</span>
-                                    <span>{{ cart.final_total || currencyFilters }}</span>
+                                    <span>{{ cart.final_total | currencyFilters }}</span>
                                 </div>
                             </div>
                             <div class="checkoutToal" v-if=" cart.total == cart.final_total">
                                 <div class="checkoutToalText">結帳總金額</div>
                                 <div class="checkoutPrice">
                                     <span>NT$</span>
-                                    <span>{{cart.total}}</span>
+                                    <span>{{cart.total | currencyFilters}}</span>
                                 </div>
                             </div>
                             <div class="checkoutToal" v-if=" cart.total !== cart.final_total">
                                 <div class="checkoutToalText">結帳總金額</div>
                                 <div class="checkoutPrice">
                                     <span>NT$</span>
-                                    <span>{{cart.final_total}}</span>
+                                    <span>{{cart.final_total | currencyFilters}}</span>
                                 </div>
                             </div>
                         </div>
@@ -271,8 +271,8 @@ export default {
                             }
                             >.item-subtotal{
                                 margin-left: 10px;
-                                max-width: 80px;
-                                min-width: 80px;
+                                max-width: 90px;
+                                min-width: 90px;
                             }
                             >.item-delete{
                                 margin-left: 30px;

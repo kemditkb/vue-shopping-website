@@ -1,5 +1,7 @@
+
+
 <template>
-  <div>
+  <div class="order">
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
       <!-- 使用 v-for 將資料渲染  -->
@@ -36,6 +38,8 @@
           </div>
         </div>
       </div>
+      <input type="text" v-model="text">
+      <div class="text" v-for="(abc, index) in filter" :key="index">{{abc.title}}</div>
     </div>
     <!-- 單一產品模板 -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
@@ -208,6 +212,7 @@ import $ from 'jquery';
 export default {
   data(){
     return{
+      text:'',
       // 放置產品列表的變數
       products:[],
       // 放置單一產品資訊
@@ -234,6 +239,22 @@ export default {
       }
     }
   },
+  computed:{
+    filter(){
+      let text = this.text;
+      let filtered = this.products;
+      if(text){
+        filtered = filtered.filter(function(item){
+            return Object.keys(item).some(function(key){
+              return String(item[key]).toLowerCase().indexOf(text) > -1
+            })
+          })
+          console.log(filtered);
+          
+      }
+      return filtered;
+    }
+  },
   methods:{
     // 產品列表
     getProducts(){
@@ -245,6 +266,7 @@ export default {
       this.$http.get(api).then((response) => {
         // 回傳成功後 將資料塞回products 在模板上就可以使用products刷新頁面
         vm.products = response.data.products;
+        console.log(vm.products)
         // 資料從API載入完成之後，isLoading的狀態改為關閉
         vm.isLoading = false;
         // 從API取得pagination 資料，並塞入 pagination 物件內
@@ -280,7 +302,7 @@ export default {
           vm.status.LoadingItem = "";
           vm.getCart();
           $('#productModal').modal('hide');
-          console.log(response)
+          // console.log(response)
       });
     },
     // 取得購物車資料
@@ -291,7 +313,7 @@ export default {
       this.$http.get(api).then((response)=>{
         // 將資料存放到 cart 陣列裡面待取用
         vm.cart = response.data.data;
-        console.log(vm.cart)
+        // console.log(vm.cart)
       })
     },
     // 刪除購物車商品項目
@@ -302,7 +324,7 @@ export default {
       const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/cart/${id}`;
       // 用delete方法取得資料
       this.$http.delete(api).then((response)=>{
-        console.log(response)
+        // console.log(response)
         this.getCart();
         vm.isLoading = false;
       })
@@ -317,7 +339,7 @@ export default {
       const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/coupon`;
       // post coupon_code的資料到API
       this.$http.post(api, { data: coupon}).then((response)=>{
-        console.log(response)
+        // console.log(response)
         this.getCart();
       })
     },
@@ -348,4 +370,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.order{
+  >.row{
+    >.text{
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+</style>
+
 

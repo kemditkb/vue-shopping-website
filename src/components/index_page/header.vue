@@ -3,10 +3,10 @@
         <div id="header-content">
             <div class="link-list">
                 <!-- 改成routerlink -->
-                <div>主打活動</div>
-                <div>折扣商品</div>
-                <div>商品列表</div>
-                <div>熱銷情報</div>
+                <div><router-link to="/product_list">主打活動</router-link></div>
+                <div><router-link to="/product_list">折扣商品</router-link></div>
+                <div><router-link to="/product_list">商品列表</router-link></div>
+                <div><router-link to="/product_list">熱銷情報</router-link></div>
             </div>
             <router-link to="/home" class="logo">
                 <h1>Vue shopping</h1>
@@ -37,7 +37,7 @@ export default {
             this.$http.get(api).then((response)=>{
                 // 將資料存放到 cart 陣列裡面待取用
                 vm.countTotal = response.data.data.carts.length;
-                console.log(response.data.data.carts.length)
+                // console.log(response.data.data.carts.length)
             })
         }
     },

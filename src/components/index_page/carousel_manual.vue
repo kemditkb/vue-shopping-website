@@ -1,13 +1,15 @@
 <template>
     <div id="carouselManual">
-        <div id="carouselExampleControls" class="carousel slide">
+        <h2>熱門銷售</h2>
+        <div id="carouselExampleControls" class="carousel slide " data-interval="false">
             <div class="carousel-inner">
+                
                 <div class="carousel-item active">
                     <div class="img-item" >
                         <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData1" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
+                                    <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
@@ -30,7 +32,7 @@
                         <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData2" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
+                                    <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
@@ -53,10 +55,12 @@
                         <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData3" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
-                                    <img class="card-img" :src="item.imageUrl" alt="Card image cap">
+                                    <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                                    <!-- <img class="card-img" :src="item.imageUrl" alt="Card image cap"> -->
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
+                                        <!-- <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div> -->
                                         <img class="card-img" src="../../assets/pic6.jpg" alt="Card image cap">
                                     </div>
                                     <div class="subordinate-section">
@@ -132,9 +136,14 @@ export default {
 <style lang="scss">
 #carouselManual{
     margin: 30px 0;
+    >h2{
+        text-align: center;
+        margin: 30px 0;
+    }
     >#carouselExampleControls{
         position: relative;
         >.carousel-inner{
+            
             >.carousel-item{
                 
                 >.img-item{
@@ -144,11 +153,6 @@ export default {
                         margin:0 20px;
                         padding: 5px;
                         height: 420px;
-                        >img{
-                            margin: auto;
-                            width: 100px !important;
-                            height: auto;
-                        }
                         >.image-gallery{
                             width: 100%;
                             max-height: 200px;
@@ -159,8 +163,10 @@ export default {
                                 align-items: center;
                                 width: 60%;
                                 padding-right: 4px;
-                                >img{
-                                    height: 200px;
+                                >.card-img{
+                                    height: 100%;
+                                    background-position: center;
+                                    background-size: cover;
                                 }
                             }
                             >.subordinate-image{
@@ -170,7 +176,7 @@ export default {
                                 justify-content: space-between;
                                 >.subordinate-section{
                                     height: 98px;
-                                    >img{
+                                    >.card-img{
                                         height: 100%;
                                     }
                                 }

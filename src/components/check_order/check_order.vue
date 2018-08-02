@@ -69,21 +69,21 @@
                             <span>小計</span>
                             <div class="payTotal">
                                 <span>NT$ </span>
-                                <span>{{cart.total}}</span>
+                                <span>{{cart.total | currencyFilters}}</span>
                             </div>
                         </div>
                         <div class="pay-discount" v-if="cart.final_total !== cart.total">
                             <span>優惠折扣</span>
                             <div class="discountTotal">
                                 <span>NT$ </span>
-                                <span>{{ cart.final_total  }}</span>
+                                <span>{{ cart.final_total | currencyFilters }}</span>
                             </div>
                         </div>
                         <div class="pay-discount">
                             <span>金額總計</span>
                             <div class="discountTotal">
                                 <span>NT$ </span>
-                                <span>{{ cart.final_total  }}</span>
+                                <span>{{ cart.final_total | currencyFilters }}</span>
                             </div>
                         </div>
                     </div>

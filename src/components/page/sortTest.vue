@@ -60,13 +60,13 @@ export default {
             var filterKey = this.filterKey && this.filterKey.toLowerCase()
             var order = this.sortOrders[sortKey] || 1
             var data = this.data
-                if (filterKey) {
-                    data = data.filter(function (row) {
-                    return Object.keys(row).some(function (key) {
-                        return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                        })
-                    })
-                }
+                // if (filterKey) {
+                //     data = data.filter(function (row) {
+                //     return Object.keys(row).some(function (key) {
+                //         return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                //         })
+                //     })
+                // }
                 if (sortKey) {
                     data = data.slice().sort(function (a, b) {
                         a = a[sortKey]
@@ -75,14 +75,15 @@ export default {
                     })
                 }
                 if(text){
-                    
-                    data = data.filter(function(row){
-                        console.log(
-                            Object.keys(row).some(function (key) {
-                                console.log(key)
-                                String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                            })
-                        );
+                    console.log(data)
+                    data = data.filter(function(item){
+                        console.log(item);
+                        // item 是一個物件
+                        return Object.keys(item).some(function(key){
+                            console.log(String(item[key]))
+                            // String(item[key]) 將物件的內容 一個一個取出並改成字串
+                            return String(item[key]).toLowerCase().indexOf(text) > -1
+                        })
                     })
                 }
             return data

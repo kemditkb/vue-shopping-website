@@ -13,6 +13,7 @@ import SortTest from '@/components/page/sortTest'
 
 import Home from '@/components/index_page/index'
 import ProductDetail from '@/components/product_page/product_detail'
+import ProductList from '@/components/product_page/product_list'
 import ShoppingCart from '@/components/shopping_cart/shopping_cart'
 import ContactUs from '@/components/contact_us_page/contact_us'
 import Checkorder from '@/components/check_order/check_order'
@@ -105,6 +106,11 @@ export default new Router({
       component: ProductDetail
     },
     {
+      path: '/product_list',
+      name: 'ProductList',
+      component: ProductList
+    },
+    {
       path: '/shopping_cart',
       name: 'ShoppingCart',
       component: ShoppingCart
@@ -118,7 +124,7 @@ export default new Router({
       path: '/paycheckorder/:orderId',
       name: 'Paycheckorder',
       component: Paycheckorder,
-    },
+    }, 
   ]
 })
 

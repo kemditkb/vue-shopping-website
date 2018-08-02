@@ -7,22 +7,19 @@
                     <div class="col-xs-12 col-md-4">
                         <div class="img-box card mt-20">
                             <img src="../../assets/safety.png" alt="">
-                            <h3>隱私及系統加密</h3>
-                            <p>您的隱私還有安全是我們的第一考量。不但適用我們的保密系統保護您的資料，我們還保證不會把這資料透露給第三方。</p>
+                            <h3>隱私及系統加密是我們的第一考量</h3>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <div class="img-box card mt-20">
                             <img src="../../assets/pay.png" alt="">
-                            <h3>無縫整合</h3>
-                            <p>旅行者在預訂時通過KKday付款。 結束後，KKday將直接轉帳付款給活動供應商。 當你外出玩樂時，不必再煩惱交易，這部分交給我們來處理。</p>
+                            <h3>最多種付款方式，無縫整合</h3>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <div class="img-box card mt-20">
                             <img src="../../assets/screen.png" alt="">
                             <h3>隨時隨地“滑”到你想去買的商品</h3>
-                            <p></p>
                         </div>
                     </div>
                 </div>

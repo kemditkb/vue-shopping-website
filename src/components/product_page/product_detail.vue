@@ -1,5 +1,22 @@
 <template>
     <div>
+        <loading :active.sync="isLoading"></loading>
+        <!-- Modal -->
+        <div class="modal fade" id="addCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">成功加入購物車</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
         <Header></Header>
         <div class="product-detail">
             <div class="container">
@@ -20,7 +37,7 @@
                             <div class="order-info">
                                 <div class="price">
                                     <span class="symbol">NT$ </span>
-                                    <span class="amount">{{product.price}}</span>
+                                    <span class="amount">{{product.origin_price | currencyFilters}}</span>
                                 </div>
                                 <div class="count">
                                     <span class="quantity">數量：</span>
@@ -62,6 +79,7 @@
 
 import Header from '../index_page/header'
 import Footer from '../index_page/footer'
+import $ from 'jquery'
 
 export default {
     data(){
@@ -74,7 +92,8 @@ export default {
                 require('@/assets/pic6.jpg'),
                 require('@/assets/pic4.jpg'),
                 require('@/assets/pic8.jpg'),
-            ]
+            ],
+            isLoading:false,
         }
     },
     components:{
@@ -82,12 +101,15 @@ export default {
         Footer
     },
     methods:{
+        addCartCheck(){
+            
+        },
         openImg(images){
             this.imageLink = images;
         },
         getProduct(id){
             const vm = this;
-
+            this.isLoading = true;
             // 由外部給予商品ID 並給定在網址中  取得特定ID的商品資料
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/product/${id}`;
 
@@ -96,9 +118,11 @@ export default {
                 vm.product = response.data.product;
                 vm.imageLink = response.data.product.imageUrl;
                 vm.imageSrc.unshift(response.data.product.imageUrl);
+                vm.isLoading = false;
             })
         },
         addToCart(id, qty){
+            $('#addCheck').modal('show');
             const cart = {
                 product_id: id,
                 qty,
@@ -200,6 +224,7 @@ export default {
                         letter-spacing: 3px;
                         transition: all 0.3s;
                         &:hover{
+                            cursor: pointer;
                             text-decoration: none;
                             transform: translate3d(0,-5px,0);
                             box-shadow: 0 0.2em 0.2em -0.1em #c83166, 0 0.3em #a32252, 0 0.5em 0.5em -0.1em rgba(0,0,0,0.12);
