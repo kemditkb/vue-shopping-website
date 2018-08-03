@@ -6,8 +6,8 @@
         <Alert></Alert>
         <div class="container-fluid">
         <div class="row">
-            <sidebar></sidebar>
-            <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
+            <!-- <sidebar></sidebar> -->
+            <main class="container">
                 <!-- 插入路由的標籤 在這個區域內控制巢狀路由頁面 -->
                 <router-view></router-view>
             </main>

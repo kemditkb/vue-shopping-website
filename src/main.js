@@ -13,6 +13,10 @@ import VeeValidate from 'vee-validate';
 import zhTWValidate from "vee-validate/dist/locale/zh_TW";
 import './fbSDK/application';
 
+// 引入圖表
+import VCharts from 'v-charts'
+import histogram from 'v-charts/lib/histogram.common'
+
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -21,11 +25,15 @@ Vue.config.productionTip = false
 //通過全域方法 Vue.use() 使用插件
 Vue.use(VueAxios, axios)
 Vue.use(VeeValidate);
+Vue.use(VCharts)
 // 使用中文語系檔
 VeeValidate.Validator.localize('zh_TW', zhTWValidate)
 
 //通過全域元件使用元件 Vue.component（）
 Vue.component('Loading', Loading);
+
+Vue.component('histogram', histogram)
+
 
 //註冊在 Vue 實體的之前的全域過濾器
 // 在模板上會先回傳參數到過濾器中，過濾器會將資料過濾後再回傳到模板上做輸出
@@ -67,6 +75,7 @@ router.beforeEach((to, from, next) => {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  render: h => h(App),
   router,
   components: { App },
   template: '<App/>'

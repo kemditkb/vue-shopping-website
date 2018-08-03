@@ -1,16 +1,14 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from '@/components/page/Login'
-import Errorpage from '@/components/page/error'
-import Dashboard from '@/components/dashboard/dashboard'
 import Order from '@/components/dashboard/Order'
-import Products from '@/components/dashboard/products'
+
 import CustomerOrder from '@/components/customer/customer_order'
 import CustomerCheckOrder from '@/components/customer/customer_checkOrder'
 import Coupons from '@/components/dashboard/Coupons'
-import SortTest from '@/components/page/sortTest'
 
+// 套件
+import Vue from 'vue'
+import Router from 'vue-router'
 
+// 前台
 import Home from '@/components/index_page/index'
 import ProductDetail from '@/components/product_page/product_detail'
 import ProductList from '@/components/product_page/product_list'
@@ -18,10 +16,22 @@ import ShoppingCart from '@/components/shopping_cart/shopping_cart'
 import ContactUs from '@/components/contact_us_page/contact_us'
 import Checkorder from '@/components/check_order/check_order'
 import Paycheckorder from '@/components/check_order/payCheckOrder'
+
+// 後台
+import Login from '@/components/page/Login'
+import Errorpage from '@/components/page/error'
+import Dashboard from '@/components/dashboard/dashboard'
+import Cartdata from '@/components/dashboard/chartData'
+import Products from '@/components/dashboard/products'
+
+// 練習路由
+import SortTest from '@/components/page/sortTest'
 import Fblogin from '@/components/fbSDK/fblogin'
 
+// 註冊
 Vue.use(Router)
 
+// 路由實體
 export default new Router({
   routes: [
     {
@@ -39,12 +49,19 @@ export default new Router({
       name: 'Error',
       component: Errorpage
     },
+    // 後台路由
     {
       path: '/admin',
       name: 'Dashboard',
       component: Dashboard,
       // 製作巢狀路由
       children:[
+        {
+          path: 'cartdata',
+          name: 'Cartdata',
+          component: Cartdata,
+          meta: { requiresAuth: true }
+        },
         {
           path: 'products',
           name: 'Products',
@@ -63,34 +80,9 @@ export default new Router({
           component: Coupons,
           meta: { requiresAuth: true }
         },
-        
       ]
     },
-    {
-      // 使用同一個component 元件，但是路徑不同
-      path: '/',
-      // 要注意name 可以改名稱，不然會有同名的狀況，會有錯誤警告
-      name: 'Dashboard_custom_order',
-      component: Dashboard,
-      // 製作巢狀路由
-      children: [
-        {
-          path: 'custom_order',
-          name: 'CustomerOrder',
-          component: CustomerOrder,
-        },
-        {
-          path: 'custom_checkorder/:orderId',
-          name: 'CustomerCheckOrder',
-          component: CustomerCheckOrder,
-        },
-        {
-          path: 'sortTest',
-          name: 'SortTest',
-          component: SortTest,
-        },
-      ]
-    },
+    // 前台路由
     {
       path: '/home',
       name: 'Home',
@@ -126,6 +118,7 @@ export default new Router({
       name: 'Paycheckorder',
       component: Paycheckorder,
     }, 
+    // 練習路由
     {
       path: '/fblogin',
       name: 'Fblogin',

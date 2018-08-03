@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="products">
     <div>
         <loading :active.sync="isLoading"></loading>
     </div>
@@ -336,3 +336,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.products{
+  margin-top:30px;
+}
+</style>
