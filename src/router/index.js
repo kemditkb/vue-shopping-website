@@ -21,9 +21,6 @@ import Dashboard from '@/components/dashboard/dashboard'
 import Cartdata from '@/components/dashboard/chartData'
 import Products from '@/components/dashboard/products'
 
-// 練習路由
-import SortTest from '@/components/page/sortTest'
-
 
 // 註冊
 Vue.use(Router)
@@ -115,7 +112,6 @@ export default new Router({
       name: 'Paycheckorder',
       component: Paycheckorder,
     }, 
-    
   ],
 })
 
