@@ -49,7 +49,7 @@
                 </form>
                 <div class="" v-else  @click="formSubmit">
                     我們會盡快回覆您的訊息！！
-                    <router-link to="/home" class="home">
+                    <router-link to="/" class="">
                         按我回到首頁
                     </router-link>
                 </div>

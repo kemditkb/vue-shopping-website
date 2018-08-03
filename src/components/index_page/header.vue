@@ -8,7 +8,7 @@
                 <div><router-link to="/product_list">商品列表</router-link></div>
                 <div><router-link to="/product_list">熱銷情報</router-link></div>
             </div>
-            <router-link to="/home" class="logo">
+            <router-link to="/" class="logo">
                 <h1>Vue shopping</h1>
             </router-link>
             <div class="rightSideControl">

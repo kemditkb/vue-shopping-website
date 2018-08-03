@@ -20,7 +20,7 @@
                         <router-link to="/admin/coupons">優惠券</router-link>
                     </li>
                     <li>
-                        <router-link to="/home">回前台</router-link>
+                        <router-link to="/">回前台</router-link>
                     </li>
                 </ul>
             </div>
