@@ -70,15 +70,22 @@ export default {
     data(){
         return{
             isLoading:false,
+            // 儲存開啟或關閉input 修改的值
             toggle: false,
+            // 綁定input
             value:'',
+            // 目標預設值
             saleTarget:50000,
+
             orderData:[],
+            // 存放售價陣列
             saleTotal:[],
+            // 累加業績
             Total:'',
             paid:0,
             notpaid:0,
             totalOrder:0,
+            // 圖表陣列
             chartData: {
                 columns: ['id', 'total',],
                 rows: []

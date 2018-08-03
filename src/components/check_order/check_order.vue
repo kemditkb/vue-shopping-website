@@ -177,7 +177,7 @@ export default {
                     console.log(response)
                 })
                 } else {
-                console.log('欄位不完整')
+                    console.log('欄位不完整')
                 }
             });
         }

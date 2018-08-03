@@ -3,7 +3,8 @@
         <Header></Header>
         <div class="content" :class="{ active : toggleForm}">
             <div class="container">
-                <form class="request-form" v-if="!toggleForm">
+                <!-- 聯繫表單 -->
+                <form class="request-form" v-if="!toggleForm"  @click="formSubmit">
                     <h2>提交訊息</h2>
                     <div class="form-group">
                         <label for="email-input">電子信箱</label>
@@ -45,7 +46,7 @@
                         <input type="text" class="form-input" id="text-input">
                         <span>提供完整資料可以加速案件處理的速度</span>
                     </div>
-                    <button type="button" class="btn" @click="formSubmit">提交</button>
+                    <button type="button" class="btn">提交</button>
                 </form>
                 <div class="" v-else  @click="formSubmit">
                     我們會盡快回覆您的訊息！！
@@ -74,11 +75,17 @@ export default {
     },
     methods:{
         formSubmit(){
-            if(!this.toggleForm){
-                this.toggleForm = !this.toggleForm;
-            }else{
-                this.toggleForm = !this.toggleForm;
-            }
+            // 執行表單驗證
+            this.$validator.validate().then( (res) =>{
+                if(res){
+                    if(!this.toggleForm){
+                        this.toggleForm = !this.toggleForm;
+                    }else{
+                        this.toggleForm = !this.toggleForm;
+                    }
+                }
+            })
+            
         }
     }
 }
