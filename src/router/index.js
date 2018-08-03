@@ -18,6 +18,7 @@ import ShoppingCart from '@/components/shopping_cart/shopping_cart'
 import ContactUs from '@/components/contact_us_page/contact_us'
 import Checkorder from '@/components/check_order/check_order'
 import Paycheckorder from '@/components/check_order/payCheckOrder'
+import Fblogin from '@/components/fbSDK/fblogin'
 
 Vue.use(Router)
 
@@ -125,7 +126,12 @@ export default new Router({
       name: 'Paycheckorder',
       component: Paycheckorder,
     }, 
-  ]
+    {
+      path: '/fblogin',
+      name: 'Fblogin',
+      component: Fblogin,
+    }
+  ],
 })
 
 

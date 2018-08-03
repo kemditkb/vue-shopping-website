@@ -58,13 +58,13 @@
                     <div class="detail-info-section">
                         <div class="info-title">－ 產品描述 －</div>
                         <div class="info-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, repellat. Voluptatibus cumque consectetur doloribus provident natus laborum inventore nihil soluta quos totam, magnam beatae adipisci aliquam minima ea ex atque iste, quaerat minus perferendis excepturi nobis itaque molestiae rem. Quidem!
+                            {{product.description}}
                         </div>
                     </div>
                     <div class="info-section">
                         <div class="info-title">－ 說明內容 －</div>
                         <div class="info-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cumque est ipsum, necessitatibus totam iste suscipit quam culpa eveniet. Distinctio consequatur corrupti quis neque quam impedit nesciunt id beatae sint minima molestias provident, libero obcaecati laborum voluptates est alias corporis.
+                            {{product.content}}
                         </div>
                     </div>
                 </div>
@@ -101,9 +101,6 @@ export default {
         Footer
     },
     methods:{
-        addCartCheck(){
-            
-        },
         openImg(images){
             this.imageLink = images;
         },
@@ -122,7 +119,9 @@ export default {
             })
         },
         addToCart(id, qty){
+
             $('#addCheck').modal('show');
+
             const cart = {
                 product_id: id,
                 qty,

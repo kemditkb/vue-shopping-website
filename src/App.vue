@@ -7,11 +7,22 @@
 <script>
 export default {
   name: 'App',
-  created() {
-    const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/products`;
-    this.$http.get(api).then((response) => {
+  mounted(){
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 153216555532092,
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.1',
+      });
+        
+      FB.AppEvents.logPageView();   
       
-    })
+      // Get FB Login Status
+      FB.getLoginStatus( response => {
+        console.log('res', response)        // 這裡可以得到 fb 回傳的結果
+      })
+    };
   }
 }
 </script>

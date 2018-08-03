@@ -83,6 +83,7 @@ export default {
         }
     },
     methods:{
+        // 取得訂單資料
         getOreder(){
             const vm = this;
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/order/${vm.orderId}`;
@@ -91,6 +92,7 @@ export default {
                 console.log(response.data.order);
             });
         },
+        // 付款功能
         payOrder(){
             const vm = this;
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/pay/${vm.orderId}`;

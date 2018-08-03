@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Loading :active.sync="isLoading"></Loading>
         <Header></Header>
         <div class="content">
             <div class="container">
@@ -11,7 +12,6 @@
                     <div class="priceRange">
                         <div class="priceRangeTitle">金額</div>
                         <ul>
-                            
                             <li>
                                 <input type="radio" name="price" id="price-1" value="0 1000" v-model="filteredPrice">
                                 <label for="price-1">
@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            <Pagination class="pagination" :pages="pagination" @emitPages="getProduct"></Pagination>
         </div>
         <Footer></Footer>
     </div>
@@ -76,11 +77,13 @@
 <script>
 import Header from '../index_page/header'
 import Footer from '../index_page/footer'
+import Pagination from '../dashboard/pagination'
 
 export default {
     components:{
         Header,
-        Footer
+        Footer,
+        Pagination
     },
     data(){
         return {
@@ -90,16 +93,20 @@ export default {
             pagination:[],
             openfilteredData:false,
             filteredPrice:'',
+            isLoading:false
         }
     },
     methods:{
-        getProduct(){
+        getProduct(currentPage = 1){
             const vm = this;
-            const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/products`;
+            this.isLoading = true;
+            const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/products?page=${currentPage}`;
             this.$http.get(api).then( (response) => {
+                vm.isLoading = false;
                 vm.products = response.data.products;
+                vm.pagination = response.data.pagination;
+                console.log(vm.pagination)
             })
-
         },
         toLink(id){
             this.$router.push(`/product_detail/${id}`)
@@ -123,7 +130,6 @@ export default {
                         return  String(item['price']) > moreThen && String(item['price']) < lessThen;
                     })
                 })
-                console.log(vm.filteredData)
             }
             
             // 從文字輸入取得查詢
@@ -136,6 +142,7 @@ export default {
                     })
                 })
             }
+
         },
         backList(){
             this.openfilteredData = false;
@@ -277,6 +284,11 @@ export default {
                 }
             }
         }
+    }
+    >.pagination{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 </style>
