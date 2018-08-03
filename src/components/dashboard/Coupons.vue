@@ -182,3 +182,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.text-right{
+  margin-top: 30px;
+}
+</style>
+

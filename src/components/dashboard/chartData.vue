@@ -1,5 +1,7 @@
 <template>
+    
     <div class="operateInfo">
+        <Loading :active.sync="isLoading"></Loading>
         <h2>營運資料</h2>
         <div class="cardInfo">
             
@@ -67,6 +69,7 @@
 export default {
     data(){
         return{
+            isLoading:false,
             toggle: false,
             value:'',
             saleTarget:50000,
@@ -90,6 +93,7 @@ export default {
         getOrder(){
             const vm = this ;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders`;
+            this.isLoading = true;
             this.$http.get(api).then((response) => {
                 vm.orderData = response.data.orders;
                 vm.chartData.rows = response.data.orders;
@@ -112,6 +116,8 @@ export default {
                 })
                 //計算訂單總數
                 vm.totalOrder = vm.orderData.length;
+
+                this.isLoading = false;
             })
         }
     },

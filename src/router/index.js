@@ -84,7 +84,7 @@ export default new Router({
     },
     // 前台路由
     {
-      path: '/home',
+      path: '/',
       name: 'Home',
       component: Home
     },

@@ -37,10 +37,10 @@
                                 </label>
                             </li>
                             <li>
-                                <div class="clearBtn" @click="backList">
+                                <div class="clearBtn" >
                                     <span><i class="far fa-times-circle"></i></span>
-                                    <input type="radio" id="clear" name="price">
-                                    <label for="clear">清除所有篩選條件</label>
+                                    <input type="radio" id="clear" name="price" >
+                                    <label for="clear" @click="backList">清除所有篩選條件</label>
                                 </div>
                             </li>
                         </ul>
@@ -148,6 +148,7 @@ export default {
             this.openfilteredData = false;
             this.filteredData = [];
             this.filterText = '';
+            this.filteredPrice ='';
         }
     },
     created(){

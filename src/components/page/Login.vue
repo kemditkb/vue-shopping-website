@@ -42,7 +42,7 @@ export default {
       this.$http.post(api, vm.user).then((response) => {
           if(response.data.success){
               // 在vue component 找到$router參數 塞入路徑（path）轉向到 path:'/'
-              vm.$router.push('/admin/products');
+              vm.$router.push('/admin/cartdata');
 
               // 再轉向到path:'/'的過程中，main.js會執行router.beforeEach()這個函式
           }else{

@@ -11,7 +11,7 @@ import dateFilters from './filters/date'
 import VeeValidate from 'vee-validate';
 // 引入中文語系檔
 import zhTWValidate from "vee-validate/dist/locale/zh_TW";
-import './fbSDK/application';
+import './components/fbSDK/application.js';
 
 // 引入圖表
 import VCharts from 'v-charts'

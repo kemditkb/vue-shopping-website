@@ -101,7 +101,7 @@
                 <h2>Oops!!你的購物車中沒有商品</h2>
                 <div class="btn-group">
                     <router-link to="/home" class="back-btn">回到首頁繞繞</router-link>
-                    <router-link to="/custom_order" class="back-btn">產品列表逛逛</router-link>
+                    <router-link to="/product_list" class="back-btn">產品列表逛逛</router-link>
                 </div>
             </div>
         </div>
@@ -374,7 +374,8 @@ export default {
     }
 }
 .shopping-cart-empty{
-    height: calc(100vh - 200px - 90px);
+    min-height: calc(100vh - 200px - 90px);
+    max-height: 300px;
     >.container{
         >h2{
             text-align: center;

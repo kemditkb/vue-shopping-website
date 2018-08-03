@@ -14,10 +14,13 @@
                         <router-link to="/admin/products">管理商品</router-link>
                     </li>
                     <li>
-                        <a href="#">訂單列表</a>
+                        <router-link to="/admin/order">訂單列表</router-link>
                     </li>
                     <li>
-                        <a href="#">優惠券</a>
+                        <router-link to="/admin/coupons">優惠券</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/home">回前台</router-link>
                     </li>
                 </ul>
             </div>
@@ -77,8 +80,6 @@ export default {
             width: 100px;
             z-index: 99;
             display: none;
-            transition: all 0.4s;
-            
             >ul{
                 margin: 0;
                 padding: 0;

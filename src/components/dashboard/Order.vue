@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="order">
         <Loading :active.sync="isLoading"></Loading>
         <table class="table mt-4">
         <thead>
@@ -92,3 +92,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.order{
+  margin-top: 30px;
+}
+</style>
+
