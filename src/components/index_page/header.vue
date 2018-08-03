@@ -12,9 +12,6 @@
                 <h1>Vue shopping</h1>
             </router-link>
             <div class="rightSideControl">
-                <div class="fblogin">
-                    
-                </div>
                 <router-link to="/shopping_cart" class="routerLink">
                     購物車
                     <i class="fas fa-shopping-cart fa-lg"></i>

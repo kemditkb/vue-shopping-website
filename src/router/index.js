@@ -1,7 +1,4 @@
 import Order from '@/components/dashboard/Order'
-
-import CustomerOrder from '@/components/customer/customer_order'
-import CustomerCheckOrder from '@/components/customer/customer_checkOrder'
 import Coupons from '@/components/dashboard/Coupons'
 
 // 套件
@@ -26,7 +23,7 @@ import Products from '@/components/dashboard/products'
 
 // 練習路由
 import SortTest from '@/components/page/sortTest'
-import Fblogin from '@/components/fbSDK/fblogin'
+
 
 // 註冊
 Vue.use(Router)
@@ -118,12 +115,7 @@ export default new Router({
       name: 'Paycheckorder',
       component: Paycheckorder,
     }, 
-    // 練習路由
-    {
-      path: '/fblogin',
-      name: 'Fblogin',
-      component: Fblogin,
-    }
+    
   ],
 })
 

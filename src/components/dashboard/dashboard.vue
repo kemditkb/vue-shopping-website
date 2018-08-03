@@ -18,15 +18,13 @@
 
 <script>
 // 匯入其它的vue模板
-import navbar from './navbar';
-import sidebar from './sidebar';
+import navbar from './navbar'
 import Alert from './AlertMessage'
 
 export default {
     // 在components底下載入，讓dashboard使用
     components:{
         navbar,
-        sidebar,
         Alert,
     }
 }
