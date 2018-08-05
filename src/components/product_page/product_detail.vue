@@ -26,6 +26,7 @@
                             <img id="expandedImg" :src='imageLink'/>
                         </div>
                         <div class="image-row">
+                            <!-- 使用for撈出圖片  綁定在src -->
                             <div class="image-column" v-for="(images, index) in imageSrc" :key="index">
                                 <img :src="images" alt="Nature" @click="openImg(images)">
                             </div>

@@ -103,7 +103,10 @@ export default {
             this.isLoading = true;
             this.$http.get(api).then((response) => {
                 vm.orderData = response.data.orders;
+
+                // 將資料塞入圖表的陣列
                 vm.chartData.rows = response.data.orders;
+
                 // 使用 for 迴圈 與 push 方法 將售價單獨塞入到新陣列中
                 for(let i=0; i < vm.orderData.length; i++){
                     vm.saleTotal.push(vm.orderData[i].total)

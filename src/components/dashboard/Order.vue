@@ -4,11 +4,11 @@
         <table class="table mt-4">
         <thead>
             <tr>
-            <th>購買時間</th>
-            <th>Email</th>
-            <th>購買款項</th>
-            <th>應付金額</th>
-            <th>是否付款</th>
+              <th>購買時間</th>
+              <th>Email</th>
+              <th>購買款項</th>
+              <th>應付金額</th>
+              <th>是否付款</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +45,7 @@ import pagination from './pagination'
 export default {
   data() {
     return {
+      //商品列表資訊
       orders: {},
       isNew: false,
       pagination: {},
@@ -74,8 +75,10 @@ export default {
   computed: {
     // 使用排序過後的陣列做列表渲染
     sortOrder() {
+      
       const vm = this;
       let newOrder = [];
+      
       if (vm.orders.length) {
         newOrder = vm.orders.sort((a, b) => {
           const aIsPaid = a.is_paid ? 1 : 0;

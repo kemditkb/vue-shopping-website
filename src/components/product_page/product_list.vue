@@ -89,6 +89,7 @@ export default {
         return {
             products:[],
             filterText:'',
+            // 放置篩選後的資料
             filteredData:[],
             pagination:[],
             openfilteredData:false,
@@ -145,9 +146,13 @@ export default {
 
         },
         backList(){
+            // 開啟全部商品列表的模板
             this.openfilteredData = false;
+            // 清除篩選後的資料
             this.filteredData = [];
+            // 清除文字輸入框的內容
             this.filterText = '';
+            // 清除單選框的資料
             this.filteredPrice ='';
         }
     },

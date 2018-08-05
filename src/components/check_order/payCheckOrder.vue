@@ -82,6 +82,7 @@ export default {
             }
         }
     },
+    // 流程 從網址獲取訂單ID >  在連線API的時候將ID塞入網址 > 取得訂單資料
     methods:{
         // 取得訂單資料
         getOreder(){
@@ -106,7 +107,7 @@ export default {
         }
     },
     created(){
-        // 取得網址參數的方法
+        // 取得網址參數的方法，使用 params
         this.orderId = this.$route.params.orderId;
         console.log(this.orderId);
         this.getOreder();

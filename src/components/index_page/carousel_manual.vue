@@ -9,6 +9,7 @@
                         <div class="card" style="width: 18rem;" v-for="(item,index) in carouselData1" :key="index">
                             <div class="image-gallery">
                                 <div class="main-image">
+                                    <!-- 注意圖片綁定的方式 -->
                                     <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                                 </div>
                                 <div class="subordinate-image">
@@ -56,11 +57,9 @@
                             <div class="image-gallery">
                                 <div class="main-image">
                                     <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                                    <!-- <img class="card-img" :src="item.imageUrl" alt="Card image cap"> -->
                                 </div>
                                 <div class="subordinate-image">
                                     <div class="subordinate-section">
-                                        <!-- <div class="card-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div> -->
                                         <img class="card-img" src="../../assets/pic6.jpg" alt="Card image cap">
                                     </div>
                                     <div class="subordinate-section">
@@ -76,6 +75,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 輪播控制器 -->
             <a class="carousel-btn-bg bg-position-left" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-prev-icon" aria-hidden="true">
                     <i class="fas fa-angle-left fa-3x"></i>
@@ -110,6 +110,8 @@ export default {
                 this.$http.get(api).then((response) => {
                 // 回傳成功後 將資料塞回products 在模板上使用products 變數塞入資料
                 vm.products = response.data.products;
+
+                // 每筆carouselData陣列中，存放三筆資料
                 for(let i=0; i < vm.products.length ; i++){
                     if( i < 3){
                         vm.carouselData1.push(vm.products[i]);

@@ -62,6 +62,7 @@
                     </div>
                 </form>
             </div>
+
             <div class="right">
                 <div class="order-item">
                     <div class="pay-detail">
@@ -87,9 +88,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="backToCart">
                         <router-link to="/shopping_cart" class="backToCartBtn">返回購物車列表</router-link>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -168,7 +171,7 @@ export default {
             // 經由套件validate 判斷表單是否驗證成功 才執行資料傳遞
             this.$validator.validate().then( (result) => {
                 if (result) {
-                // post vm.form的資料到API
+                // post vm.form的資料到API （ 將資料傳回API，使用大括號將資料包起來 ）
                 this.$http.post(api, { data: vm.form }).then((response)=>{
                     if(response.data.success){
                         // 成功post之後 轉跳頁面到結帳確認頁面  網址部分注意格式

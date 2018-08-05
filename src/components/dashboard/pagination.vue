@@ -44,3 +44,17 @@ export default {
     },
 };
 </script>
+<!--
+整個流程
+
+> 上層元件會取得分頁的資料 
+
+> 再來上層元件上的pagination標籤會綁定分頁資料
+
+> pagination元件使用prop方法接收上層元件傳入的資料 
+
+> 當pagination元件，觸發事件時，一併啟動this.$emit
+
+> 向上層尋找emitPages觸發更新頁面功能
+
+-->

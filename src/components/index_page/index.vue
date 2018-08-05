@@ -9,7 +9,7 @@
         <Footer></Footer>
     </div>
 </template>
-
+<!-- 利用component 將畫面組裝 -->
 
 <script>
 import Header from './header'

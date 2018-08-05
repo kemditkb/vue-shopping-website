@@ -7,7 +7,6 @@
             <div class="btnList">
                 <ul>
                     <li>
-                        <!-- 再改成routerlink -->
                         <router-link to="/admin/cartdata">儀表板</router-link>
                     </li>
                     <li>

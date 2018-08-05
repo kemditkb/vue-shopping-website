@@ -23,7 +23,7 @@
 </template>
 
 <script>
-// 從api 取出購物車商品數量資料 > 要另外做商品數量加總
+// 從api 取出購物車商品數量資料
 export default {
     data(){
         return{
@@ -35,9 +35,8 @@ export default {
             const vm = this;
             const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/cart`;
             this.$http.get(api).then((response)=>{
-                // 將資料存放到 cart 陣列裡面待取用
+                // 取得購物車內的陣列長度，並存到countTotal變數中，渲染到畫面上
                 vm.countTotal = response.data.data.carts.length;
-                // console.log(response.data.data.carts.length)
             })
         }
     },

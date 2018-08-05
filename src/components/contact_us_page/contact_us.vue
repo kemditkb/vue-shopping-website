@@ -8,6 +8,7 @@
                     <h2>提交訊息</h2>
                     <div class="form-group">
                         <label for="email-input">電子信箱</label>
+                        <!-- 驗證表單的配置，在input下進行 -->
                         <input type="email" 
                             name="email"
                             class="form-input" 
@@ -30,6 +31,7 @@
                         :class="{ 'is-invalid': errors.has('title') }">
                         <span class="text-danger" v-if="errors.has('title')">標題欄位不得為空</span>
                     </div>
+
                     <div class="form-group">
                         <label for="textarea-input">描述</label>
                         <textarea type="textarea" 
@@ -41,19 +43,24 @@
                         </textarea>
                         <span class="text-danger" v-if="errors.has('areaText')">描述欄位不得為空</span>
                     </div>
+
                     <div class="form-group">
                         <label for="text-input">訂單編號</label>
                         <input type="text" class="form-input" id="text-input">
                         <span>提供完整資料可以加速案件處理的速度</span>
                     </div>
+
                     <button type="button" class="btn">提交</button>
+
                 </form>
+
                 <div class="" v-else  @click="formSubmit">
                     我們會盡快回覆您的訊息！！
                     <router-link to="/" class="">
                         按我回到首頁
                     </router-link>
                 </div>
+                
             </div>
         </div>
         <Footer></Footer>
