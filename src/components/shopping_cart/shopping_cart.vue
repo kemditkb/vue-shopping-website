@@ -167,6 +167,8 @@ export default {
                 this.getCart();
                 vm.isLoading = false;
             })
+
+            this.$bus.$emit('updateHeaderCart');
         },
         addCouponCartItem(){
             const vm = this;
