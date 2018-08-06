@@ -42,6 +42,13 @@ export default {
     },
     created(){
         this.getCartInfo();
+        
+    },
+    mounted(){
+        const vm = this;
+        this.$bus.$on('updateHeaderCart', function(){
+            vm.getCartInfo();
+        });
     }
 }
 </script>

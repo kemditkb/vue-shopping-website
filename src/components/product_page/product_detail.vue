@@ -132,6 +132,8 @@ export default {
             this.$http.post(api, { data:cart }).then((response)=>{
                 console.log(response);
             });
+
+            this.$bus.$emit('updateHeaderCart');
         }
     },
     created(){
