@@ -39,6 +39,7 @@ export default {
     props: ['pages'],
     methods: {
         updatePage(page) {
+            // 向父元件尋找相同名稱的事件
             this.$emit('emitPages', page);
         },
     },
@@ -53,8 +54,8 @@ export default {
 
 > pagination元件使用prop方法接收上層元件傳入的資料 
 
-> 當pagination元件，觸發事件時，一併啟動this.$emit
+> 當pagination元件，觸發事件時，一併啟動this.$emit (this.$emit(eventName,args))))
 
-> 向上層尋找emitPages觸發更新頁面功能
+> 向上層尋找相同名稱的事件emitPages,觸發更新頁面功能
 
 -->

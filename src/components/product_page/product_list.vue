@@ -13,7 +13,7 @@
                         <div class="priceRangeTitle">金額</div>
                         <ul>
                             <li>
-                                <input type="radio" name="price" id="price-1" value="0 1000" v-model="filteredPrice">
+                                <input type="radio" name="price" id="price-1" value="1 1000" v-model="filteredPrice">
                                 <label for="price-1">
                                     <span>$1000 以下</span>
                                 </label>
@@ -68,7 +68,9 @@
                     </div>
                 </div>
             </div>
-            <Pagination class="pagination" :pages="pagination" @emitPages="getProduct"></Pagination>
+            <template v-if="!openfilteredData">
+                <Pagination class="pagination" :pages="pagination" @emitPages="getProduct"></Pagination>
+            </template>
         </div>
         <Footer></Footer>
     </div>
@@ -94,7 +96,8 @@ export default {
             pagination:[],
             openfilteredData:false,
             filteredPrice:'',
-            isLoading:false
+            isLoading:false,
+            allproducts:[],
         }
     },
     methods:{
@@ -106,8 +109,19 @@ export default {
                 vm.isLoading = false;
                 vm.products = response.data.products;
                 vm.pagination = response.data.pagination;
-                console.log(vm.pagination)
+                // console.log(vm.pagination)
             })
+        },
+        getAllproducts(){
+            const vm = this;
+            // 全部商品API
+            const api = `${ process.env.APIPATH }/api/${ process.env.CUSTOMPATH }/products/all`;
+            this.$http.get(api).then( (response) => {
+                console.log(response)
+                vm.isLoading = false;
+                vm.allproducts = response.data.products;
+            })
+
         },
         toLink(id){
             this.$router.push(`/product_detail/${id}`)
@@ -116,19 +130,28 @@ export default {
         submitFilterText(){
             
             const vm = this;
-
+            
             // 價錢區間的篩選
             if(vm.filteredPrice){
                 vm.openfilteredData = true;
                 // 將字串轉陣列
                 let arraytest = vm.filteredPrice.split(" ")
-                vm.filteredData = vm.products.filter(function(item){
+                // console.log(arraytest)
+                vm.filteredData = vm.allproducts.filter(function(item){
                     return Object.keys(item).some(function(key){
+                        
                         // 將陣列的資料型態轉成數值
                         let moreThen = parseInt(arraytest[0]);
                         let lessThen = parseInt(arraytest[1]);
+                        // console.log(item)
+                        // console.log(String(item['price']) < lessThen)
                         // 進行篩選
-                        return  String(item['price']) > moreThen && String(item['price']) < lessThen;
+                        if( moreThen && lessThen){
+                            return  Number(item['origin_price']) > moreThen && Number(item['origin_price']) < lessThen;
+                        }else{
+                            return  Number(item['origin_price']) > moreThen
+                        }
+                        
                     })
                 })
             }
@@ -154,10 +177,12 @@ export default {
             this.filterText = '';
             // 清除單選框的資料
             this.filteredPrice ='';
+            this.getProduct();
         }
     },
     created(){
         this.getProduct();
+        this.getAllproducts();
     }
 }
 </script>

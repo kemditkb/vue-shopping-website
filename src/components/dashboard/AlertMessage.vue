@@ -51,14 +51,15 @@ export default {
   created() {
     const vm = this;
     // 透過this 呼叫 $bus變數，已經掛載在bus.js底下
-    // 自定義名稱 'messsage:push'
+    // 自定義事件名稱 'messsage:push'
     // message: 傳入參數
     // status: 樣式，預設值為 warning
     vm.$bus.$on('messsage:push', (message, status = 'warning') => {
       // 呼叫 updateMessage
       vm.updateMessage(message, status);
     });
-    // vm.$bus.$emit('messsage:push');
+    // 當有其他元件使用到以下語法，會觸發vm.$bus.$on('messsage:push'）
+    // vm.$bus.$emit('messsage:push')
   },
 };
 </script>
